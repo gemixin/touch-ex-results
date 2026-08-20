@@ -50,17 +50,19 @@ The result files retain accuracy, loss, weighted F1, predictions, ground-truth l
 
 ### Object and object region classification
 
+Unless stated otherwise, experiments used the default input pipeline: the `pad_224` transform with background subtraction, dataset normalisation and no training augmentations.
+
 #### Experiment 1 - fine-tuned model comparison
 
-Six model types were trained end to end with their default settings. Inputs used the `pad_224` transform. The baseline used a learning rate of `3e-4`; the other models used `2e-5`.
+Six model types were trained end to end using their default settings. The baseline used a learning rate of `3e-4`; the other models used `2e-5`.
 
 #### Experiment 2 - frozen-backbone model comparison
 
-Five model backbones were evaluated with the backbone frozen. Inputs used the `pad_224` transform and a learning rate of `2e-4`.
+Five model types were evaluated with their backbones frozen. The baseline CNN was excluded because it can only be trained end to end. A learning rate of `2e-4` was used.
 
 #### Experiment 3 - ResNet-18 augmentation sweep
 
-ResNet-18 was fine-tuned using the `center_crop_224` transform and a learning rate of `2e-5`. The sweep compares no augmentation, colour jitter, random resized crop, and a combination of colour jitter with random resized crop.
+ResNet-18 was fine-tuned using `center_crop_224` instead of the default `pad_224` transform, with a learning rate of `2e-5`. The sweep compares no augmentation, colour jitter, random resized crop, and a combination of colour jitter and random resized crop. Centre cropping was used as the evaluation transform to remain compatible with random resized cropping during training: when training images are cropped, test images should also be cropped, but deterministically and consistently.
 
 ### Force level classification
 
