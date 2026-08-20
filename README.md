@@ -1,8 +1,8 @@
-# Touch-Ex Results
+# Touch-Ex-Results
 
 This private repository stores results from experiments conducted using the [Touch-Ex](https://github.com/gemixin/touch-ex) pipeline. It contains saved experiment metadata, plots, and notebooks for analysing completed experiments.
 
-## Project structure
+## Project Structure
 
 - `results/` contains experiment metadata, evaluation outputs, and plots, organised into directories by target label
 - `acc_f1_tables/` contains CSV summaries of accuracy and weighted F1 for each target-label experiment
@@ -30,7 +30,7 @@ conda env create -f environment.yml
 conda activate touch-ex-results
 ```
 
-## Results format and evaluation
+## Results Format
 
 Each target-label directory stores an `experiments.parquet` file with one row per run. Records include the run and model configuration, training history, target labels, predictions, and metrics. Every target-label result file uses the same schema, while its labels and task-specific configuration may differ. For a compact per-experiment view, `acc_f1_tables/` provides CSVs with standard-test and unseen-matched accuracy and weighted F1.
 
@@ -46,9 +46,9 @@ The result files retain accuracy, loss, weighted F1, predictions, ground-truth l
 
 `results/test_data_configs/` follows a different format: it contains the outputs from the exploratory `test_data_configs.ipynb` notebook in the [Touch-Ex repository](https://github.com/gemixin/touch-ex), rather than per-run `experiments.parquet` records.
 
-## Experiment summaries
+## Experiment Summaries
 
-### Object and object region classification
+### Object and Object Region Classification
 
 Unless stated otherwise, experiments used the default input pipeline: the `pad_224` transform with background subtraction, dataset normalisation and no training augmentations.
 
@@ -64,7 +64,7 @@ Five model types were evaluated with their backbones frozen. The baseline CNN wa
 
 ResNet-18 was fine-tuned using `center_crop_224` instead of the default `pad_224` transform, with a learning rate of `2e-5`. The sweep compares no augmentation, colour jitter, random resized crop, and a combination of colour jitter and random resized crop. Centre cropping was used as the evaluation transform to remain compatible with random resized cropping during training: when training images are cropped, test images should also be cropped, but deterministically and consistently.
 
-### Force level classification
+### Force Level Classification
 
 Coming soon...
 
