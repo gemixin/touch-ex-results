@@ -64,6 +64,14 @@ Five model types were evaluated with their backbones frozen. The baseline CNN wa
 
 ResNet-18 was fine-tuned using `center_crop_224` instead of the default `pad_224` transform, with a learning rate of `2e-5`. The sweep compares no augmentation, colour jitter, random resized crop, and a combination of colour jitter and random resized crop. Centre cropping was used as the evaluation transform to remain compatible with random resized cropping during training: when training images are cropped, test images should also be cropped, but deterministically and consistently.
 
+#### Experiment 4 - ResNet-18 background-subtraction sweep
+
+ResNet-18 was fine-tuned with the `center_crop_224` transform and a learning rate of `2e-5`. All training augmentations were enabled: colour jitter, horizontal flip, and random resized crop. The sweep compares training with and without background subtraction. Runs were trained for up to 25 epochs with early stopping.
+
+#### Experiment 5 - ResNet-18 padded augmentation sweep
+
+ResNet-18 was fine-tuned using the default `pad_224` transform and a learning rate of `2e-5`. The sweep compares no augmentation, colour jitter, horizontal flip, and the combination of colour jitter with horizontal flip.
+
 ### Force Level Classification
 
 Coming soon...
