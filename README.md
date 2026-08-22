@@ -72,6 +72,10 @@ ResNet-18 was fine-tuned with the `center_crop_224` transform and a learning rat
 
 ResNet-18 was fine-tuned using the default `pad_224` transform and a learning rate of `2e-5`. The sweep compares no augmentation, colour jitter, horizontal flip, and the combination of colour jitter with horizontal flip.
 
+#### Experiment 6 - ResNet-18 colour-jitter settings sweep
+
+ResNet-18 was fine-tuned using the default `pad_224` transform and a learning rate of `2e-5`. The sweep compares two colour-jitter configurations: the SSVTP settings (brightness and contrast of `0.9–1.1`, hue of `0.05`, and saturation of `0.2`) and the T3 settings (brightness and contrast of `0.6–1.4`, hue of `0.3`, and saturation of `0.5`).
+
 ### Force Level Classification
 
 Coming soon...
