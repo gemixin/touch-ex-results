@@ -76,6 +76,10 @@ ResNet-18 was fine-tuned using the default `pad_224` transform and a learning ra
 
 ResNet-18 was fine-tuned using the default `pad_224` transform and a learning rate of `2e-5`. The sweep compares two colour-jitter configurations: the SSVTP settings (brightness and contrast of `0.9–1.1`, hue of `0.05`, and saturation of `0.2`) and the T3 settings (brightness and contrast of `0.6–1.4`, hue of `0.3`, and saturation of `0.5`).
 
+#### Experiment 7 - ResNet-18 normalisation sweep
+
+ResNet-18 was fine-tuned using the `pad_224` transform, background subtraction, the SSVTP colour-jitter settings, and a learning rate of `2e-5`. The sweep compares no normalisation, dataset normalisation, and ImageNet normalisation. 
+
 ### Force Level Classification
 
 Coming soon...
