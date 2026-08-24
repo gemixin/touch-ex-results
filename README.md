@@ -66,7 +66,7 @@ ResNet-18 was fine-tuned using `center_crop_224` instead of the default `pad_224
 
 #### Experiment 4 - ResNet-18 background-subtraction sweep
 
-ResNet-18 was fine-tuned with the `center_crop_224` transform and a learning rate of `2e-5`. All training augmentations were enabled: colour jitter, horizontal flip, and random resized crop. The sweep compares training with and without background subtraction. Runs were trained for up to 25 epochs with early stopping.
+ResNet-18 was fine-tuned with the `center_crop_224` transform and a learning rate of `2e-5`. All training augmentations were enabled: colour jitter, horizontal flip, and random resized crop. The sweep compares training with and without background subtraction. Runs were trained for up to 25 epochs with early stopping (`early_stopping_patience`: `5`; `early_stopping_min_delta`: `0.1`).
 
 #### Experiment 5 - ResNet-18 padded augmentation sweep
 
