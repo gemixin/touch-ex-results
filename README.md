@@ -80,6 +80,14 @@ ResNet-18 was fine-tuned using the default `pad_224` transform and a learning ra
 
 ResNet-18 was fine-tuned using the `pad_224` transform, background subtraction, the SSVTP colour-jitter settings, and a learning rate of `2e-5`. The sweep compares no normalisation, dataset normalisation, and ImageNet normalisation. 
 
+#### Experiment 8 - T3-Tiny augmentation sweep
+
+T3-Tiny was fine-tuned using the `center_crop_224` transform, dataset normalisation, no background subtraction, and a learning rate of `2e-5` for 10 epochs. This tests whether matching the cropping and no-background-subtraction settings used to train the T3 encoder improves downstream performance. The sweep compares no augmentation with the full SSVTP and T3 augmentation settings: colour jitter, horizontal flip, and random resized crop.
+
+#### Experiment 9 - T3-Tiny maximum augmentation sweep
+
+T3-Tiny was fine-tuned using the `center_crop_224` transform, dataset normalisation, and no background subtraction. Building on Experiment 8, this experiment compares the full SSVTP and T3 augmentation configurations: colour jitter, horizontal flip, and random resized crop. The training schedule was extended from 10 to up to 25 epochs with early stopping (`early_stopping_patience`: `3`; `early_stopping_min_delta`: `0.1`), and a learning rate of `5e-5`, to give the models more opportunity to reach their maximum performance.
+
 ### Force Level Classification
 
 Coming soon...
