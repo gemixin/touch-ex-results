@@ -88,6 +88,10 @@ T3-Tiny was fine-tuned using the `center_crop_224` transform, dataset normalisat
 
 T3-Tiny was fine-tuned using the `center_crop_224` transform, dataset normalisation, and no background subtraction. Building on Experiment 8, this experiment compares the full SSVTP and T3 augmentation configurations: colour jitter, horizontal flip, and random resized crop. The training schedule was extended from 10 to up to 25 epochs with early stopping (`early_stopping_patience`: `3`; `early_stopping_min_delta`: `0.1`), and a learning rate of `5e-5`, to give the models more opportunity to reach their maximum performance.
 
+#### Experiments 10–14 - ResNet-18 candidate seed sweep
+
+These experiments repeat the same four candidate ResNet-18 configurations using seeds `129`–`133`, to assess the stability of the results across random seeds. All runs used dataset normalisation, background subtraction, a learning rate of `2e-5`, and up to 25 epochs with early stopping (`early_stopping_patience`: `3`; `early_stopping_min_delta`: `0.1`). The candidates were `pad_224` with no augmentation (`pad_none`); `pad_224` with SSVTP colour jitter (`pad_jitter`); `pad_224` with SSVTP colour jitter and horizontal flipping (`pad_flip_jitter`); and `center_crop_224` with SSVTP colour jitter, horizontal flipping, and random resized cropping (`crop_all`).
+
 ### Force Level Classification
 
 Coming soon...
