@@ -1,0 +1,5 @@
+run_name,n_seeds,test_acc_mean,test_acc_std,test_weighted_f1_avg_mean,test_weighted_f1_avg_std,test_unseen_matched_acc_mean,test_unseen_matched_acc_std,test_unseen_matched_weighted_f1_avg_mean,test_unseen_matched_weighted_f1_avg_std
+crop_all,4,86.29,2.38,0.86,0.02,56.19,2.23,0.63,0.02
+pad_flip_jitter,4,91.66,0.89,0.92,0.01,50.61,1.03,0.56,0.02
+pad_jitter,4,93.28,0.97,0.93,0.01,51.16,2.15,0.55,0.04
+pad_none,4,93.86,1.2,0.94,0.01,46.66,2.89,0.51,0.03

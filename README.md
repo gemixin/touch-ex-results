@@ -84,13 +84,17 @@ ResNet-18 was fine-tuned using the `pad_224` transform, background subtraction, 
 
 T3-Tiny was fine-tuned using the `center_crop_224` transform, dataset normalisation, no background subtraction, and a learning rate of `2e-5` for 10 epochs. This tests whether matching the cropping and no-background-subtraction settings used to train the T3 encoder improves downstream performance. The sweep compares no augmentation with the full SSVTP and T3 augmentation settings: colour jitter, horizontal flip, and random resized crop.
 
-#### Experiment 9 - T3-Tiny maximum augmentation sweep
+#### Experiment 9 - T3-Tiny extended augmentation sweep
 
-T3-Tiny was fine-tuned using the `center_crop_224` transform, dataset normalisation, and no background subtraction. Building on Experiment 8, this experiment compares the full SSVTP and T3 augmentation configurations: colour jitter, horizontal flip, and random resized crop. The training schedule was extended from 10 to up to 25 epochs with early stopping (`early_stopping_patience`: `3`; `early_stopping_min_delta`: `0.1`), and a learning rate of `5e-5`, to give the models more opportunity to reach their maximum performance.
+Experiment 9 repeats Experiment 8 with the same T3-Tiny model, input pipeline, and three augmentation configurations, but extends training to up to 25 epochs using a learning rate of `5e-5` and early stopping (`early_stopping_patience`: `3`; `early_stopping_min_delta`: `0.1`) to give the models more opportunity to reach their potential.
 
-#### Experiments 10–14 - ResNet-18 candidate seed sweep
+#### Experiments 10-13 - ResNet-18 candidate seed sweep
 
-These experiments repeat the same four candidate ResNet-18 configurations using seeds `129`–`133`, to assess the stability of the results across random seeds. All runs used dataset normalisation, background subtraction, a learning rate of `2e-5`, and up to 25 epochs with early stopping (`early_stopping_patience`: `3`; `early_stopping_min_delta`: `0.1`). The candidates were `pad_224` with no augmentation (`pad_none`); `pad_224` with SSVTP colour jitter (`pad_jitter`); `pad_224` with SSVTP colour jitter and horizontal flipping (`pad_flip_jitter`); and `center_crop_224` with SSVTP colour jitter, horizontal flipping, and random resized cropping (`crop_all`).
+These experiments repeat the same four candidate ResNet-18 configurations using seeds `129`-`132`, to assess the stability of the results across random seeds. All runs used dataset normalisation, background subtraction, a learning rate of `2e-5`, and up to 25 epochs with early stopping (`early_stopping_patience`: `3`; `early_stopping_min_delta`: `0.1`). The candidates were `pad_224` with no augmentation (`pad_none`); `pad_224` with SSVTP colour jitter (`pad_jitter`); `pad_224` with SSVTP colour jitter and horizontal flipping (`pad_flip_jitter`); and `center_crop_224` with SSVTP colour jitter, horizontal flipping, and random resized cropping (`crop_all`).
+
+#### Experiment 14 - T3-Tiny frozen augmentation sweep
+
+T3-Tiny was used with its encoder frozen, the `center_crop_224` transform, dataset normalisation, and no background subtraction, to match the settings used when the encoder was pre-trained. The experiment compares no augmentation with the full SSVTP and T3 augmentation configurations: colour jitter, horizontal flip, and random resized crop. Runs use an extended schedule: a learning rate of `5e-5` for up to 25 epochs, with early stopping (`early_stopping_patience`: `3`; `early_stopping_min_delta`: `0.1`).
 
 ### Force Level Classification
 
