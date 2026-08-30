@@ -94,7 +94,7 @@ These experiments repeat the same four candidate ResNet-18 configurations using 
 
 #### Experiment 14 - T3-Tiny frozen augmentation sweep
 
-T3-Tiny was used with its encoder frozen, the `center_crop_224` transform, dataset normalisation, and no background subtraction, to match the settings used when the encoder was pre-trained. The experiment compares no augmentation with the full SSVTP and T3 augmentation configurations: colour jitter, horizontal flip, and random resized crop. Runs use an extended schedule: a learning rate of `5e-5` for up to 25 epochs, with early stopping (`early_stopping_patience`: `3`; `early_stopping_min_delta`: `0.1`).
+T3-Tiny was used with its encoder frozen, the `center_crop_224` transform, dataset normalisation, and no background subtraction, to match the settings used when the encoder was pre-trained. The experiment compares no augmentation with the full SSVTP and T3 augmentation configurations: colour jitter, horizontal flip, and random resized crop. Runs use the default frozen-model learning rate of `2e-4` for up to 25 epochs, with early stopping (`early_stopping_patience`: `3`; `early_stopping_min_delta`: `0.1`).
 
 ### Force Level Classification
 
