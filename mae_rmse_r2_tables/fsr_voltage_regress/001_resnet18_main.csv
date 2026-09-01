@@ -1,0 +1,2 @@
+model_type,test_mae,test_rmse,test_r2,test_unseen_matched_mae,test_unseen_matched_rmse,test_unseen_matched_r2,test_unseen_related_mae,test_unseen_related_rmse,test_unseen_related_r2
+resnet18_regressor,0.2812838887400839,0.5027414258812724,0.8544704087567841,0.4226063556441416,0.7063153317699397,0.7457613645080351,0.47254258229859664,0.8141420374017747,0.6584150399326106
