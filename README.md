@@ -96,9 +96,15 @@ These experiments repeat the same four candidate ResNet-18 configurations using 
 
 T3-Tiny was used with its encoder frozen, the `center_crop_224` transform, dataset normalisation, and no background subtraction, to match the settings used when the encoder was pre-trained. The experiment compares no augmentation with the full SSVTP and T3 augmentation configurations: colour jitter, horizontal flip, and random resized crop. Runs use the default frozen-model learning rate of `2e-4` for up to 25 epochs, with early stopping (`early_stopping_patience`: `3`; `early_stopping_min_delta`: `0.1`).
 
+#### Experiment 15 - ResNet-18 force-level and motion filter sweep
+
+ResNet-18 was fine-tuned on five filtered variants of the dataset to assess how restricting the training data by contact conditions affects object and object-region classification. Three runs retain only force level `1`, `2`, or `3`, while two retain only the `sliding` or `rotation` motion. All runs used the `pad_224` transform, background subtraction, dataset normalisation, SSVTP colour jitter, and a learning rate of `2e-5` for up to 25 epochs, with early stopping (`early_stopping_patience`: `3`; `early_stopping_min_delta`: `0.1`).
+
 ### Force Level Classification
 
-Coming soon...
+#### Experiment 1 - ResNet-18 force-level classification
+
+ResNet-18 was fine-tuned to classify the three force levels (`1`, `2`, and `3`). The run used the `pad_224` transform, background subtraction, dataset normalisation, SSVTP colour jitter, and a learning rate of `2e-5` for up to 25 epochs, with early stopping (`early_stopping_patience`: `3`; `early_stopping_min_delta`: `0.1`).
 
 ## Notes
 
