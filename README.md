@@ -6,6 +6,7 @@ This private repository stores results from experiments conducted using the [Tou
 
 - `results/` contains experiment metadata, evaluation outputs, and plots, organised into directories by target label
 - `acc_f1_tables/` contains CSV summaries of accuracy and weighted F1 for each target-label experiment
+- `mae_rmse_r2_tables/` contains CSV summaries of MAE, RMSE, and R² for each regression experiment
 - `notebooks/` contains notebooks for exploring and comparing completed experiments
 
 ## Installation
@@ -32,7 +33,7 @@ conda activate touch-ex-results
 
 ## Results Format
 
-Each target-label directory stores an `experiments.parquet` file with one row per run. Records include the run and model configuration, training history, target labels, predictions, and metrics. Every target-label result file uses the same schema, while its labels and task-specific configuration may differ. For a compact per-experiment view, `acc_f1_tables/` provides CSVs with standard-test and unseen-matched accuracy and weighted F1.
+Each target-label directory stores an `experiments.parquet` file with one row per run. Records include the run and model configuration, training history, predictions, and task-specific metrics. Classification results include target labels, accuracy, and weighted F1, while regression results include the regression target, MAE, RMSE, and R². For compact per-experiment views, `acc_f1_tables/` provides classification CSVs and `mae_rmse_r2_tables/` provides regression CSVs.
 
 Where available, every run reports three evaluation splits:
 
@@ -42,7 +43,7 @@ Where available, every run reports three evaluation splits:
 | Unseen matched | Generalisation to unseen variants of represented objects |
 | Unseen related | Generalisation to related but distinct objects |
 
-The result files retain accuracy, loss, weighted F1, predictions, ground-truth labels, and expected labels for each split.
+The result files retain loss, predictions, ground-truth values, and the relevant classification or regression metrics for each split. Classification results additionally retain expected labels for the unseen evaluation splits.
 
 `results/test_data_configs/` follows a different format: it contains the outputs from the exploratory `test_data_configs.ipynb` notebook in the [Touch-Ex repository](https://github.com/gemixin/touch-ex), rather than per-run `experiments.parquet` records.
 
@@ -106,8 +107,21 @@ ResNet-18 was fine-tuned on five filtered variants of the dataset to assess how 
 
 ResNet-18 was fine-tuned to classify the three force levels (`1`, `2`, and `3`). The run used the `pad_224` transform, background subtraction, dataset normalisation, SSVTP colour jitter, and a learning rate of `2e-5` for up to 25 epochs, with early stopping (`early_stopping_patience`: `3`; `early_stopping_min_delta`: `0.1`).
 
+### Force Regression
+
+#### Experiment 1 - ResNet-18 force regression
+
+ResNet-18 was fine-tuned to predict continuous force in newtons (`force_n`). The run used the `pad_224` transform, background subtraction, dataset normalisation, SSVTP colour jitter, and a learning rate of `2e-5` for up to 25 epochs, with early stopping (`early_stopping_patience`: `3`; `early_stopping_min_delta`: `0.001`).
+
+### FSR Voltage Regression
+
+#### Experiment 1 - Resnet-18 FSR voltage regression
+
+ResNet-18 was fine-tuned to predict the force-sensitive resistor (FSR) output voltage (`fsr_voltage`). The run used the `pad_224` transform, background subtraction, dataset normalisation, SSVTP colour jitter, and a learning rate of `2e-5` for up to 25 epochs, with early stopping (`early_stopping_patience`: `3`; `early_stopping_min_delta`: `0.001`).
+
+
 ## Notes
 
-This repository stores generated experiment outputs only. The classification pipeline, model implementations, and experiment scripts are maintained in the main [Touch-Ex repository](https://github.com/gemixin/touch-ex). Use that pipeline to run new experiments, then add the generated result file here and update the experiment summary above when needed.
+This repository stores generated experiment outputs only. The classification and regression pipelines, model implementations, and experiment scripts are maintained in the main [Touch-Ex repository](https://github.com/gemixin/touch-ex). Use that pipeline to run new experiments, then add the generated result file here and update the experiment summary above when needed.
 
 Model checkpoints are stored separately and are not included here.
