@@ -1,0 +1,2 @@
+run_name,test_acc,test_weighted_f1_avg,test_unseen_matched_acc,test_unseen_matched_weighted_f1_avg,test_unseen_related_acc,test_unseen_related_weighted_f1_avg
+conditioned_resnet18,88.86963696369637,0.8871108252133516,33.041666666666664,0.34859213658662913,17.041666666666668,0.22391495311487264

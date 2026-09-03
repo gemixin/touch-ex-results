@@ -49,7 +49,9 @@ The result files retain loss, predictions, ground-truth values, and the relevant
 
 ## Experiment Summaries
 
-### Object and Object Region Classification
+### Object and Object-Region Classification
+
+Each experiment in this section was run separately for the `object` and `object_region` target labels.
 
 Unless stated otherwise, experiments used the default input pipeline: the `pad_224` transform with background subtraction, dataset normalisation and no training augmentations.
 
@@ -101,23 +103,35 @@ T3-Tiny was used with its encoder frozen, the `center_crop_224` transform, datas
 
 ResNet-18 was fine-tuned on five filtered variants of the dataset to assess how restricting the training data by contact conditions affects object and object-region classification. Three runs retain only force level `1`, `2`, or `3`, while two retain only the `sliding` or `rotation` motion. All runs used the `pad_224` transform, background subtraction, dataset normalisation, SSVTP colour jitter, and a learning rate of `2e-5` for up to 25 epochs, with early stopping (`early_stopping_patience`: `3`; `early_stopping_min_delta`: `0.1`).
 
+#### Experiment 16 - ResNet-18 Main
+
+*ResNet-18 Main* is the configuration selected from the candidate sweep in Experiments 10–13 and provides a reference for comparison with other models in future experiments. It uses the `pad_224` transform, background subtraction, dataset normalisation, SSVTP colour jitter, and a learning rate of `2e-5` for up to 25 epochs, with early stopping (`early_stopping_patience`: `3`; `early_stopping_min_delta`: `0.1`).
+
+### Conditioned Object and Object-Region Classification
+
+Each experiment in this section was run separately for the `object` and `object_region` target labels.
+
+#### Experiment 1 - ResNet-18 with force-level conditioning
+
+This experiment uses the *ResNet-18 Main* configuration with force level added as a conditioning input. Force-level labels (`1`, `2`, and `3`) were mapped to normalised scalar values (`0.0`, `0.5`, and `1.0`). Image and conditioning features were combined using a fusion layer with a hidden dimension of `256` and dropout of `0.2`.
+
 ### Force Level Classification
 
 #### Experiment 1 - ResNet-18 force-level classification
 
-ResNet-18 was fine-tuned to classify the three force levels (`1`, `2`, and `3`). The run used the `pad_224` transform, background subtraction, dataset normalisation, SSVTP colour jitter, and a learning rate of `2e-5` for up to 25 epochs, with early stopping (`early_stopping_patience`: `3`; `early_stopping_min_delta`: `0.1`).
+This experiment uses the *ResNet-18 Main* configuration to classify the three force levels (`1`, `2`, and `3`).
 
 ### Force Regression
 
 #### Experiment 1 - ResNet-18 force regression
 
-ResNet-18 was fine-tuned to predict continuous force in newtons (`force_n`). The run used the `pad_224` transform, background subtraction, dataset normalisation, SSVTP colour jitter, and a learning rate of `2e-5` for up to 25 epochs, with early stopping (`early_stopping_patience`: `3`; `early_stopping_min_delta`: `0.001`).
+This experiment uses the *ResNet-18 Main* configuration to predict continuous force in newtons (`force_n`), with `early_stopping_min_delta` reduced to `0.001` for regression.
 
 ### FSR Voltage Regression
 
-#### Experiment 1 - Resnet-18 FSR voltage regression
+#### Experiment 1 - ResNet-18 FSR voltage regression
 
-ResNet-18 was fine-tuned to predict the force-sensitive resistor (FSR) output voltage (`fsr_voltage`). The run used the `pad_224` transform, background subtraction, dataset normalisation, SSVTP colour jitter, and a learning rate of `2e-5` for up to 25 epochs, with early stopping (`early_stopping_patience`: `3`; `early_stopping_min_delta`: `0.001`).
+This experiment uses the *ResNet-18 Main* configuration to predict the force-sensitive resistor (FSR) output voltage (`fsr_voltage`), with `early_stopping_min_delta` reduced to `0.001` for regression.
 
 
 ## Notes
