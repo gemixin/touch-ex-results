@@ -7,6 +7,7 @@ This private repository stores results from experiments conducted using the [Tou
 - `results/` contains experiment metadata, evaluation outputs, and plots, organised into directories by target label
 - `acc_f1_tables/` contains CSV summaries of accuracy and weighted F1 for each target-label experiment
 - `mae_rmse_r2_tables/` contains CSV summaries of MAE, RMSE, and R² for each regression experiment
+- `plots/` contains plots comparing results across experiments
 - `notebooks/` contains notebooks for exploring and comparing completed experiments
 
 ## Installation
@@ -132,7 +133,6 @@ This experiment uses the *ResNet-18 Main* configuration to predict continuous fo
 #### Experiment 1 - ResNet-18 FSR voltage regression
 
 This experiment uses the *ResNet-18 Main* configuration to predict the force-sensitive resistor (FSR) output voltage (`fsr_voltage`), with `early_stopping_min_delta` reduced to `0.001` for regression.
-
 
 ## Notes
 
