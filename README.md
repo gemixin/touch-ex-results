@@ -139,3 +139,57 @@ This experiment uses the *ResNet-18 Main* configuration to predict the force-sen
 This repository stores generated experiment outputs only. The classification and regression pipelines, model implementations, and experiment scripts are maintained in the main [Touch-Ex repository](https://github.com/gemixin/touch-ex). Use that pipeline to run new experiments, then add the generated result file here and update the experiment summary above when needed.
 
 Model checkpoints are stored separately and are not included here.
+
+## Citations
+
+If you use Touch-Ex in your research, please cite:
+
+```
+@dataset{mclean2026touchex,
+  author = {McLean, Gemma and Hao, Zhou Daniel},
+  title = {Touch-Ex: A Region-Level, Force-Annotated Visuo-Tactile Dataset},
+  year = {2026}
+}
+```
+
+Touch-Ex was collected using the DIGIT vision-based tactile sensor. If you use this dataset in your research, please additionally cite the original DIGIT paper:
+
+```
+@article{lambeta2020digit,
+  title = {DIGIT: A Novel Design for a Low-Cost Compact High-Resolution Tactile Sensor with Application to In-Hand Manipulation},
+  author = {Lambeta, Mike and Chou, Po-Wei and Tian, Stephen and Yang, Brian and Maloon, Benjamin and Most, Victoria Rose and Stroud, Dave and Santos, Raymond and Byagowi, Ahmad and Kammerer, Gregg and Jayaraman, Dinesh and Calandra, Roberto},
+  journal = {IEEE Robotics and Automation Letters},
+  volume = {5},
+  number = {3},
+  pages = {3838--3845},
+  year = {2020},
+  doi = {10.1109/LRA.2020.2977257}
+}
+```
+
+If you use the T3-Tiny encoder, also cite:
+
+```
+@article{zhao2024transferable,
+  title={Transferable Tactile Transformers for Representation Learning Across Diverse Sensors and Tasks}, 
+  author={Jialiang Zhao and Yuxiang Ma and Lirui Wang and Edward H. Adelson},
+  year={2024},
+  eprint={2406.13640},
+  archivePrefix={arXiv},
+}
+```
+
+SSVTP (used for ColorJitter settings):
+
+```
+@misc{kerr2023selfsupervisedvisuotactilepretraininglocate,
+      title={Self-Supervised Visuo-Tactile Pretraining to Locate and Follow Garment Features}, 
+      author={Justin Kerr and Huang Huang and Albert Wilcox and Ryan Hoque and Jeffrey Ichnowski and Roberto Calandra and Ken Goldberg},
+      year={2023},
+      eprint={2209.13042},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO},
+      url={https://arxiv.org/abs/2209.13042}, 
+}
+```
+
