@@ -1,6 +1,6 @@
 # Touch-Ex-Results
 
-This private repository stores results from experiments conducted using the [Touch-Ex](https://github.com/gemixin/touch-ex) pipeline. It contains saved experiment metadata, plots, and notebooks for analysing completed experiments.
+This repository stores results from experiments conducted using the [Touch-Ex](https://github.com/gemixin/touch-ex) pipeline. It contains saved experiment metadata, plots, and notebooks for analysing completed experiments.
 
 ## Project Structure
 
