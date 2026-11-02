@@ -1,0 +1,13 @@
+name: touch-ex-results
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python>=3.10
+  - scikit-learn
+  - pandas
+  - matplotlib
+  - seaborn
+  - pyarrow>=15
+  - ipykernel
+  - ipywidgets
