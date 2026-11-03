@@ -1,0 +1,11 @@
+class,precision,recall,f1,support
+mug_body,0.0,0.0,0.0,720
+mug_handle,0.0,0.0,0.0,720
+mug_rim,0.0,0.0,0.0,720
+scissors_blades,0.0,0.0,0.0,720
+scissors_handle,0.1486697965571205,0.2638888888888889,0.19019019019019018,720
+tin_can_base,0.0,0.0,0.0,720
+tin_can_body,0.0,0.0,0.0,720
+tin_can_lid,0.0,0.0,0.0,720
+tv_remote_body,0.3809034907597536,0.5152777777777777,0.4380165289256198,720
+tv_remote_buttons,0.0,0.0,0.0,720
