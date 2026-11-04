@@ -86,13 +86,13 @@ Experiments use two purposes:
 | Purpose | Evaluated splits |
 | --- | --- |
 | `model_selection` | Internal `val` and `validation_unseen_matched` |
-| `final_evaluation` | Internal `test`, `test_unseen_matched`, `test_unseen_related`, and `validation_unseen_matched` |
+| `final_evaluation` | Internal `test`, `test_unseen_matched`, `test_unseen_related`, and `validation_unseen_matched*` |
+
+*During final evaluation, `validation_unseen_matched` is  evaluated to provide additional insight into performance on the validation instances, but the results are not considered independent test results. 
 
 Internal validation controls checkpoint selection and early stopping in both modes: accuracy for classification and normalised Huber loss for regression.
 
 The internal test partition measures performance on new interactions from represented objects. The matched unseen test split measures generalisation to new physical instances of known object categories. The related unseen test split supports analysis of predictions on new but tactually related categories.
-
-During final evaluation, `validation_unseen_matched` is included as an additional diagnostic tool, not an independent generalisation evaluation.
 
 ## Experiment Summaries
 
@@ -104,7 +104,7 @@ These experiments use `object_region` classification and are stored under:
 results/model_selection/object_region_classification/
 ```
 
-Internal validation accuracy determines checkpoint selection and early stopping. Accuracy on `validation_unseen_matched` guides model and configuration selection.
+Internal validation accuracy determines checkpoint selection and early stopping. Accuracy on `validation_unseen_matched` and internal validation guides model and configuration selection.
 
 Unless stated otherwise, the initial model comparisons use `pad_224`, background subtraction, dataset normalisation, and no training augmentation. Later sweeps retain settings selected in preceding stages, except those being varied. Complete data and training configurations are retained in each experiment record.
 
