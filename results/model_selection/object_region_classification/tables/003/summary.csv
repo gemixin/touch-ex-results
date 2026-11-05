@@ -1,0 +1,2 @@
+run_name,model_type,val_accuracy,val_macro_f1_avg,validation_unseen_matched_accuracy,validation_unseen_matched_macro_f1_avg
+t3_tiny,t3_tiny,22.56030701754386,0.13780126076249075,5.125,0.046059332177477694

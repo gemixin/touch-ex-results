@@ -104,7 +104,7 @@ These experiments use `object_region` classification and are stored under:
 results/model_selection/object_region_classification/
 ```
 
-Internal validation accuracy determines checkpoint selection and early stopping. Accuracy on `validation_unseen_matched` and internal validation guides model and configuration selection.
+Internal validation accuracy determines checkpoint selection and early stopping. Both internal validation accuracy and accuracy on `validation_unseen_matched` guide model and configuration selection.
 
 Unless stated otherwise, the initial model comparisons use `pad_224`, background subtraction, dataset normalisation, and no training augmentation. Later sweeps retain settings selected in preceding stages, except those being varied. Complete data and training configurations are retained in each experiment record.
 
@@ -126,11 +126,11 @@ Evaluate T3-Tiny through end-to-end fine-tuning using `center_crop_224`, dataset
 
 #### 005, 006 — Candidate learning-rate sweep
 
-Compare learning rates of `1e-5`, `2e-5`, `3e-5`, and `4e-5` for the two best performing candidate encoders identified by the preceding comparisons.
+Compare learning rates of `1e-5`, `2e-5`, `3e-5`, and `4e-5` for the two selected candidate encoders (ViT-Small/16 and ResNet-18) identified by the preceding comparisons.
 
 #### 007 — Weight-decay sweep
 
-Using the selected encoder and learning rate, compare weight decay values of `0.0`, `0.002`, `0.02`, and `0.1`.
+Using the selected encoder and learning rate (ResNet-18 and `2e-5`), compare weight decay values of `0.0`, `0.002`, `0.02`, and `0.1`.
 
 The selected weight decay is retained for subsequent experiments.
 
