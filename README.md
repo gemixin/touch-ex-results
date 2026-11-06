@@ -130,7 +130,7 @@ Compare learning rates of `1e-5`, `2e-5`, `3e-5`, and `4e-5` for the two selecte
 
 #### 007 — Weight-decay sweep
 
-Using the selected encoder and learning rate (ResNet-18 and `2e-5`), compare weight decay values of `0.0`, `0.002`, `0.02`, and `0.1`.
+Using the selected encoder and learning rate (ResNet-18 and `3e-5`), compare weight decay values of `0.0`, `0.002`, `0.02`, and `0.1`.
 
 The selected weight decay is retained for subsequent experiments.
 
