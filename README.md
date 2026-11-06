@@ -128,11 +128,13 @@ Evaluate T3-Tiny through end-to-end fine-tuning using `center_crop_224`, dataset
 
 Compare learning rates of `1e-5`, `2e-5`, `3e-5`, and `4e-5` for the two selected candidate encoders (ViT-Small/16 and ResNet-18) identified by the preceding comparisons.
 
+The selected encoder and learning rate (ResNet-18 and `3e-5`) is retained for subsequent experiments.
+
 #### 007 — Weight-decay sweep
 
-Using the selected encoder and learning rate (ResNet-18 and `3e-5`), compare weight decay values of `0.0`, `0.002`, `0.02`, and `0.1`.
+Compare weight decay values of `0.0`, `0.002`, `0.02`, and `0.1`.
 
-The selected weight decay is retained for subsequent experiments.
+The selected weight decay (`0.02`) is retained for subsequent experiments.
 
 #### 008 — Background-subtraction and normalisation sweep
 
