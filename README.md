@@ -134,7 +134,7 @@ The selected encoder and learning rate (ResNet-18 and `3e-5`) is retained for su
 
 Compare weight decay values of `0.0`, `0.002`, `0.02`, and `0.1`.
 
-The selected weight decay (`0.02`) is retained for subsequent experiments.
+The selected weight decay (`0.1`) is retained for subsequent experiments.
 
 #### 008 — Background-subtraction and normalisation sweep
 
