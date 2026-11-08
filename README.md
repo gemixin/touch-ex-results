@@ -143,7 +143,7 @@ Compare all six combinations of:
 - Background subtraction enabled or disabled
 - No normalisation, dataset normalisation, or ImageNet normalisation
 
-The selected background-subtraction and normalisation settings are retained for subsequent experiments.
+The selected background-subtraction (enabled) and normalisation settings (dataset) are retained for subsequent experiments.
 
 #### 009 — Augmentation sweep
 
