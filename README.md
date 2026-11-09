@@ -154,27 +154,34 @@ Using the selected model and configuration, compare four training augmentation s
 - Horizontal flipping
 - Colour jitter and horizontal flipping
 
-The selected augmentation settings complete the final training recipe.
+The selected augmentation settings (colour jitter and horizontal flipping) complete the final training recipe.
 
 ### Final Evaluation
 
 The selected backbone and recipe are applied independently to each final task. Each task starts from the same pretrained encoder checkpoint and is fine-tuned with its own task-specific head, producing separate encoder weights.
 
+Each final task is trained and evaluated three times, using training seeds `156`, `157`, and `158`. Dataset partitioning remains fixed at seed `129` across these runs.
+
 Experiment numbering starts independently within each task directory under `results/final_evaluation/`.
 
-| Task folder | Experiment | Summary |
+| Task folder | Experiments | Summary |
 | --- | --- | --- |
-| `object_classification` | `001` | Object classification |
-| `object_region_classification` | `001` | Object-region classification |
-| `force_level_classification` | `001` | Force-level classification |
-| `object_conditioned_classification` | `001` | Object classification with ground-truth force level supplied as an additional input |
-| `object_region_conditioned_classification` | `001` | Object-region classification with ground-truth force level supplied as an additional input |
-| `force_n_regression` | `001` | Continuous force prediction in newtons |
-| `fsr_voltage_regression` | `001` | FSR output voltage prediction in volts |
+| `object_classification` | `001-003` | Object classification |
+| `object_region_classification` | `001-003` | Object-region classification |
+| `force_level_classification` | `001-003` | Force-level classification |
+| `object_conditioned_classification` | `001-003` | Object classification with ground-truth force level supplied as an additional input |
+| `object_region_conditioned_classification` | `001-003` | Object-region classification with ground-truth force level supplied as an additional input |
+| `force_n_regression` | `001-003` | Continuous force prediction in newtons |
+| `fsr_voltage_regression` | `001-003` | FSR output voltage prediction in volts |
 
 Conditioned classification combines the image representation with a normalised force-level scalar through a fusion layer. These experiments are compared with their corresponding image-only classification results.
 
 Regression uses a single-value prediction head and Huber loss, with targets normalised using training-partition statistics. MAE and RMSE are reported in the original target units.
+
+## Comparisons
+
+Notebooks comparing results across training seeds and image-only versus force-level-conditioned classification can be found in `notebooks/`.
+The exported comparison tables and plot can be found in `exports/`.
 
 ## Notes
 
