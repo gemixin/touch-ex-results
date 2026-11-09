@@ -2,7 +2,7 @@
 
 This repository stores results from experiments conducted using the [Touch-Ex](https://github.com/gemixin/touch-ex) pipeline. It contains saved experiment metadata, evaluation outputs, plots, and notebooks for analysing completed experiments.
 
-The experiments compare tactile image encoders and preprocessing configurations, then assess the selected approach across object recognition, object-region classification, and force-aware perception tasks.
+The experiments compared tactile image encoders and preprocessing configurations, then assessed the selected approach across object recognition, object-region classification, and force-aware perception tasks.
 
 ## Project Structure
 
@@ -98,69 +98,69 @@ The internal test partition measures performance on new interactions from repres
 
 ### Model and Configuration Selection
 
-These experiments use `object_region` classification and are stored under:
+These experiments used `object_region` classification and are stored under:
 
 ```text
 results/model_selection/object_region_classification/
 ```
 
-Internal validation accuracy determines checkpoint selection and early stopping. Both internal validation accuracy and accuracy on `validation_unseen_matched` guide model and configuration selection.
+Internal validation accuracy determined checkpoint selection and early stopping. Both internal validation accuracy and accuracy on `validation_unseen_matched` guided model and configuration selection.
 
-Unless stated otherwise, the initial model comparisons use `pad_224`, background subtraction, dataset normalisation, and no training augmentation. Later sweeps retain settings selected in preceding stages, except those being varied. Complete data and training configurations are retained in each experiment record.
+Unless stated otherwise, the initial model comparisons used `pad_224`, background subtraction, dataset normalisation, and no training augmentation. Later sweeps retained settings selected in preceding stages, except those being varied. Complete data and training configurations are retained in each experiment record.
 
 #### 001 — Frozen-backbone model comparison
 
-Compare ResNet-18, ResNet-50, EfficientNet-B0, ViT-Small/16, and DeiT-Tiny with their pretrained backbones frozen. Only the classification heads are trained, using a learning rate of `2e-4`.
+ResNet-18, ResNet-50, EfficientNet-B0, ViT-Small/16, DeiT-Tiny and T3-Tiny were compared with their pretrained backbones frozen. Only the classification heads were trained, using a learning rate of `2e-4`.
 
 #### 002 — Fine-tuned model comparison
 
-Compare the same five pretrained encoders through end-to-end fine-tuning, alongside the baseline CNN trained from scratch. Pretrained models use a learning rate of `2e-5`; the baseline uses `3e-4`.
+The same six pretrained encoders were compared through end-to-end fine-tuning, alongside the baseline CNN trained from scratch. Pretrained models used a learning rate of `2e-5`; the baseline used `3e-4`.
 
 #### 003 — Frozen T3-Tiny
 
-Evaluate T3-Tiny with its pretrained encoder frozen, using `center_crop_224`, dataset normalisation, and no background subtraction. Only the classification head is trained, using a learning rate of `2e-4`.
+T3-Tiny was evaluated with its pretrained encoder frozen, using `center_crop_224`, dataset normalisation, and no background subtraction. Only the classification head was trained, using a learning rate of `2e-4`.
 
 #### 004 — Fine-tuned T3-Tiny
 
-Evaluate T3-Tiny through end-to-end fine-tuning using `center_crop_224`, dataset normalisation, and no background subtraction. The learning rate is `2e-5`.
+T3-Tiny was evaluated through end-to-end fine-tuning using `center_crop_224`, dataset normalisation, and no background subtraction. The learning rate was `2e-5`.
 
 #### 005, 006 — Candidate learning-rate sweep
 
-Compare learning rates of `1e-5`, `2e-5`, `3e-5`, and `4e-5` for the two selected candidate encoders (ViT-Small/16 and ResNet-18) identified by the preceding comparisons.
+Learning rates of `1e-5`, `2e-5`, `3e-5`, and `4e-5` were compared for the two selected candidate encoders (ViT-Small/16 and ResNet-18) identified by the preceding comparisons.
 
-The selected encoder and learning rate (ResNet-18 and `3e-5`) is retained for subsequent experiments.
+The selected encoder and learning rate (ResNet-18 and `3e-5`) were retained for subsequent experiments.
 
 #### 007 — Weight-decay sweep
 
-Compare weight decay values of `0.0`, `0.002`, `0.02`, and `0.1`.
+Weight decay values of `0.0`, `0.002`, `0.02`, and `0.1` were compared.
 
-The selected weight decay (`0.1`) is retained for subsequent experiments.
+The selected weight decay (`0.1`) was retained for subsequent experiments.
 
 #### 008 — Background-subtraction and normalisation sweep
 
-Compare all six combinations of:
+All six combinations of the following settings were compared:
 
 - Background subtraction enabled or disabled
 - No normalisation, dataset normalisation, or ImageNet normalisation
 
-The selected background-subtraction (enabled) and normalisation settings (dataset) are retained for subsequent experiments.
+The selected background-subtraction (enabled) and normalisation settings (dataset) were retained for subsequent experiments.
 
 #### 009 — Augmentation sweep
 
-Using the selected model and configuration, compare four training augmentation settings:
+Using the selected model and configuration, four training augmentation settings were compared:
 
 - No augmentation
 - Colour jitter
 - Horizontal flipping
 - Colour jitter and horizontal flipping
 
-The selected augmentation settings (colour jitter and horizontal flipping) complete the final training recipe.
+The selected augmentation settings (colour jitter and horizontal flipping) completed the final training recipe.
 
 ### Final Evaluation
 
-The selected backbone and recipe are applied independently to each final task. Each task starts from the same pretrained encoder checkpoint and is fine-tuned with its own task-specific head, producing separate encoder weights.
+The selected backbone and recipe were applied independently to each final task. Each task started from the same pretrained encoder checkpoint and was fine-tuned with its own task-specific head, producing separate encoder weights.
 
-Each final task is trained and evaluated three times, using training seeds `156`, `157`, and `158`. Dataset partitioning remains fixed at seed `129` across these runs.
+Each final task was trained and evaluated three times, using training seeds `156`, `157`, and `158`. Dataset partitioning remained fixed at seed `129` across these runs.
 
 Experiment numbering starts independently within each task directory under `results/final_evaluation/`.
 
@@ -174,9 +174,9 @@ Experiment numbering starts independently within each task directory under `resu
 | `force_n_regression` | `001-003` | Continuous force prediction in newtons |
 | `fsr_voltage_regression` | `001-003` | FSR output voltage prediction in volts |
 
-Conditioned classification combines the image representation with a normalised force-level scalar through a fusion layer. These experiments are compared with their corresponding image-only classification results.
+Conditioned classification combined the image representation with a normalised force-level scalar through a fusion layer. These experiments were compared with their corresponding image-only classification results.
 
-Regression uses a single-value prediction head and Huber loss, with targets normalised using training-partition statistics. MAE and RMSE are reported in the original target units.
+Regression used a single-value prediction head and Huber loss, with targets normalised using training-partition statistics. MAE and RMSE were reported in the original target units.
 
 ## Comparisons
 
