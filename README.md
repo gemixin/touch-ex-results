@@ -98,7 +98,7 @@ The internal test partition measures performance on new interactions from repres
 
 ### Model and Configuration Selection
 
-These experiments used `object_region` classification and are stored under:
+These experiments used `object_region` classification with random seed `156` and are stored under:
 
 ```text
 results/model_selection/object_region_classification/
