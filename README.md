@@ -49,6 +49,7 @@ results/<experiment_purpose>/<task>/
 | :--- | :--- |
 | Classification | `<target>_classification` |
 | Force-conditioned classification | `<target>_conditioned_classification` |
+| Zero-conditioned classification | `<target>_conditioned_zero_classification` |
 | Regression | `<target>_regression` |
 
 `<NNN>` is the zero-padded experiment number within each purpose/task combination. Each experiment contains one or more runs, representing individual models or configurations. Experiment names are recorded as metadata and do not determine output paths.
@@ -171,17 +172,21 @@ Experiment numbering starts independently within each task directory under `resu
 | `force_level_classification` | `001-003` | Force-level classification |
 | `object_conditioned_classification` | `001-003` | Object classification with ground-truth force level supplied as an additional input |
 | `object_region_conditioned_classification` | `001-003` | Object-region classification with ground-truth force level supplied as an additional input |
+| `object_conditioned_zero_classification` | `001-003` | Object classification with the conditioning input fixed at zero |
+| `object_region_conditioned_zero_classification` | `001-003` | Object-region classification with the conditioning input fixed at zero |
 | `force_n_regression` | `001-003` | Continuous force prediction in newtons |
 | `fsr_voltage_regression` | `001-003` | FSR output voltage prediction in volts |
 
 Conditioned classification combined the image representation with a normalised force-level scalar through a fusion layer. These experiments were compared with their corresponding image-only classification results.
 
-Regression used a single-value prediction head and Huber loss, with targets normalised using training-partition statistics. MAE and RMSE were reported in the original target units.
+Zero-conditioned classification uses the same fusion architecture as force-conditioned classification, with the conditioning scalar fixed at zero during training and evaluation. This provides a control for assessing the contribution of force information while keeping the architecture the same.
+
+Regression used a single-value prediction head and Huber loss, with targets normalised using training-partition statistics.
 
 ## Comparisons
 
-Notebooks comparing results across training seeds and image-only versus force-level-conditioned classification can be found in `notebooks/`.
-The exported comparison tables and plot can be found in `exports/`.
+Notebooks comparing results across training seeds and the gains from force-conditioned and zero-conditioned classification over image-only baselines can be found in `notebooks/`.
+The conditioning comparison notebook exports a separate CSV table and plot for force-conditioned versus image-only, zero-conditioned versus image-only, and force-conditioned versus zero-conditioned results. The exported comparison tables and plots can be found in `exports/`.
 
 ## Notes
 
