@@ -186,7 +186,7 @@ Regression used a single-value prediction head and Huber loss, with targets norm
 ## Comparisons
 
 Notebooks comparing results across training seeds and the gains from force-conditioned and zero-conditioned classification over image-only baselines can be found in `notebooks/`.
-The conditioning comparison notebook exports a separate CSV table and plot for force-conditioned versus image-only, zero-conditioned versus image-only, and force-conditioned versus zero-conditioned results. The exported comparison tables and plots can be found in `exports/`.
+The conditioning comparison notebook exports a separate CSV table and plot for force-conditioned versus image-only and zero-conditioned versus image-only results. The exported comparison tables and plots can be found in `exports/`.
 
 ## Notes
 
