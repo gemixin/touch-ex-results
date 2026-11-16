@@ -1,0 +1,2 @@
+run_name,model_type,test_accuracy,test_macro_f1_avg,test_unseen_matched_accuracy,test_unseen_matched_macro_f1_avg,validation_unseen_matched_accuracy,validation_unseen_matched_macro_f1_avg
+conditioned_resnet18,resnet18,90.82236842105263,0.9103446069309057,48.28703703703704,0.608753888865343,49.93055555555556,0.5464912289780901
